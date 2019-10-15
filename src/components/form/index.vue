@@ -7,9 +7,9 @@
             <FormItem name='密码' prop='psw'>
                 <Input type='password'  placeholder="请输入" v-model='model.psw'/>
             </FormItem>
-            <!-- <FormItem name='协议' prop='read'> -->
-                <!-- <CheckBox :v-model='model.read'/> 请阅读 -->
-            <!-- </FormItem> -->
+            <FormItem name='协议' prop='read'>
+                <Checkbox :checked.sync='model.read'/> 请阅读
+            </FormItem>
             <FormItem>
                 <Button @click="submit">login</Button>
             </FormItem>
@@ -21,9 +21,12 @@
     import FormItem from './FormItem.vue';
     import Input from './Input.vue';
     import Checkbox from './Checkbox.vue';
+    import Message from '../Message.vue';
     export default {
         components:{
+            Message,
             Form,
+            Checkbox,
             FormItem,
             Input
         },
@@ -48,9 +51,9 @@
             submit(){
                 this.$refs['form'].validate((state)=>{
                     if(state){
-                        alert('succ')
+                        this.$notice(Message, {content:'操作成功'}).show()
                     }else {
-                        alert('fail')
+                        this.$notice(Message, {title:'失败',content:'操作失败'}).show()
                     }
                 })
             }

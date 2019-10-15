@@ -32,6 +32,7 @@
                 console.log(this.form)
                 const value = this.form.model[this.prop];
                 const rule = this.form.rules[this.prop];
+                if(!rule) return Promise.resolve(true);
                 const schema = new Schema({[this.prop]:rule})
                 //返回的是promise
                 return schema.validate({[this.prop]:value}, (err)=>{

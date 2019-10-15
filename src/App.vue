@@ -1,62 +1,12 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <svg>
-      <use xlink:href='#icon-blue' />
-    </svg>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <div style='color:red'>
-      {{desc}}
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
-    <!-- <Child ref='xx' name="zero"></Child> -->
-    <!-- <Child name="zwz" @notice='notice'></Child> -->
-    <FormSample></FormSample>
-    <MySlot>hhhh</MySlot>
-    <MySlot>
-      title
-      <template v-slot:content='ctx'>content{{ctx.foo}}</template>
-      aaaa
-    </MySlot>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import FormSample from './components/form'
-import Child from './components/Child.vue'
-import MySlot from './components/MySlot.vue'
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  provide(){
-    return {'grandson':{name:'pig'}}
-  },
-  data() {
-    return {
-      desc:''
-    }
-  },
-  components: {
-    FormSample,
-    MySlot,
-    Child,
-    HelloWorld
-  },
-  mounted() {
-    console.log(this.$refs)
-    // this.$refs.xx.myname = 'hi'
-    console.log(this.$children)
-    this.$on('hello',(m)=>{
-      this.desc = m;
-    })
-  },
-  methods: {
-    notice(m){
-      console.log(m)
-    }
-  },
-}
-</script>
 
 <style>
 #app {
