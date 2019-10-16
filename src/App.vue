@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Breadcrumb></Breadcrumb>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -7,7 +8,14 @@
     <router-view/>
   </div>
 </template>
-
+<script>
+import Breadcrumb from './views/Breadcrumb.vue'
+export default {
+  components:{
+    Breadcrumb 
+  }
+}
+</script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
